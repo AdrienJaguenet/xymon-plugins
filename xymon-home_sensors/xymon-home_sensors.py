@@ -89,11 +89,10 @@ for sensor in sensors.values():
 		elif variable.color == "yellow" and _status != "red":
 			_status = "yellow"
 
+_msg_line="\n".join([str(sensor) for sensor in sensors.values()])
 if debug:
-	_msg_line="\n".join([str(sensor) for sensor in sensors.values()])
 	print(_msg_line)
 else:
-	_msg_line="&%sIndoor_temp: %s\n&%sIndoor_humidity: %s\n&%sFloor_temp: %s\n&%sFloor_humidity: %s\n&%sVeranda_temp: %s\n&%sVeranda_humidity: %s\nOutdoor_temp: %s\nOutdoor_humidity: %s\n" % (ground_temp_color, ground_temp, ground_humidity_color, ground_humidity, floor_temp_color, floor_temp, floor_humidity_color, floor_humidity, veranda_temp_color, veranda_temp, veranda_humidity_color, veranda_humidity, outdoor_temp, outdoor_humidity)
 	_cmd_line="%s %s \"status %s.%s %s %s\n\n%s\"" %(os.environ['XYMON'], os.environ['XYMSRV'], os.environ['MACHINE'], _test, _status, _date, _msg_line)
 	#Lancement commande 
 	os.system(_cmd_line)
