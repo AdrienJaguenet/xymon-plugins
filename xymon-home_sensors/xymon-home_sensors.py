@@ -52,7 +52,7 @@ sensors = {
 	"ground": Sensor('ground'),
 	"floor": Sensor('floor'),
 	"veranda": Sensor('veranda'),
-	"garage": Sensor('garage')
+	"outdoor": Sensor('outdoor')
 }
 
 #Define variables from config file
@@ -74,12 +74,12 @@ with open(_Source_File, 'r') as f:
 		values = [float(x) for x in row.split(",")]
 		sensors['ground'].variables['temperature'].value = values[0]
 		sensors['ground'].variables['humidity'].value = values[1]
-		sensors['floor'].variables['temperature'].value = values[2]
-		sensors['floor'].variables['humidity'].value = values[3]
-		sensors['veranda'].variables['temperature'].value = values[4]
-		sensors['veranda'].variables['humidity'].value = values[5]
-		sensors['garage'].variables['temperature'].value = values[6]
-		sensors['garage'].variables['humidity'].value = values[7]
+		sensors['outdoor'].variables['temperature'].value = values[2]
+		sensors['outdoor'].variables['humidity'].value = values[3]
+		sensors['floor'].variables['temperature'].value = values[4]
+		sensors['floor'].variables['humidity'].value = values[5]
+		sensors['veranda'].variables['temperature'].value = values[6]
+		sensors['veranda'].variables['humidity'].value = values[7]
 
 # Check for colors
 for sensor in sensors.values():
